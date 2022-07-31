@@ -1,11 +1,11 @@
 name: Patchron
-on:
-  pull_request:
+on: pull_request
     types: [opened]
-      jobs:
-        build:
-          runs-on: ubuntu-latest
+jobs:
+    build:
+        runs-on: ubuntu-latest
           steps:
             - uses: trolit/Patchron
             - name: install modules
               run: yarn
+
