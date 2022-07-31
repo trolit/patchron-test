@@ -1,6 +1,7 @@
 name: Patchron
-on: pull_request
-    types: [opened]
+on:
+  pull_request:
+    types: [ opened ]
 jobs:
     build:
         runs-on: ubuntu-latest
