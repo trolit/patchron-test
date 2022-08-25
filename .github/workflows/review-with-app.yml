@@ -1,0 +1,29 @@
+name: Review PR (app)
+
+on:
+    pull_request:
+        types:
+            - opened
+
+jobs:
+    reviewOpenedPull:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: navikt/github-app-token-generator@v1
+              id: get-token
+              with:
+                  private-key: ${{ secrets.PRIVATE_KEY }}
+                  app-id: ${{ secrets.APP_ID }}
+
+            - uses: actions/checkout@v3
+              with:
+                  repository: 'trolit/Patchron'
+                  ref: 'v1.2.2'
+
+            - run: npm ci --only=production
+
+            - run: npm start
+              env:
+                  GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
+                  NODE_ENV: 'production'
+                  # available options: https://github.com/trolit/Patchron#2-configuration
