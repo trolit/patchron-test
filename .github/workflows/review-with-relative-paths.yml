@@ -20,5 +20,5 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # or secrets.PAT
                   NODE_ENV: 'production'
-                  RULES_CONFIGURATION_URL: 'https://raw.githubusercontent.com/trolit/Patchron/feature/configure-rules-by-path/.github/examples/rulesByRelativePaths.json'
+                  RULES_CONFIGURATION_PATH: '@root/.github/examples/rulesByRelativePaths'
                   # available options: https://github.com/trolit/Patchron#2-configuration
