@@ -19,6 +19,6 @@ jobs:
             - run: npm start
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # or secrets.PAT
-                  NODE_ENV: 'production'
+                  NODE_ENV: "github"
                   RULES_CONFIGURATION_URL: 'https://raw.githubusercontent.com/trolit/Patchron/master/.github/examples/rulesByRelativePaths.json'
                   # available options: https://github.com/trolit/Patchron#2-configuration
