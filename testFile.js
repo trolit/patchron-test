@@ -1,0 +1,3 @@
+// unmarked comment
+
+module.exports = () => {};
