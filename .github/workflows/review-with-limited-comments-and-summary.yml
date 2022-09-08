@@ -1,0 +1,25 @@
+name: Review PR (limited comments + summary)
+
+on:
+    pull_request:
+        types:
+            - opened
+
+jobs:
+    reviewOpenedPull:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  repository: 'trolit/Patchron'
+                  ref: 'master'
+
+            - run: npm ci --only=production
+
+            - run: npm start
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # or secrets.PAT
+                  NODE_ENV: 'github'
+                  RULES_CONFIGURATION_PATH: '@root/.github/examples/NodeVueSingleRepo.json'
+                  IS_REVIEW_SUMMARY_ENABLED: true
+                  MAX_COMMENTS_PER_REVIEW: 1
